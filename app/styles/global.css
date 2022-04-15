@@ -1,0 +1,23 @@
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+body {
+  font-family: Montserrat, sans-serif;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+
+  --SECONDARY_COLOR: #5B9DFF;
+  --TERTIARY_COLOR: #FFD232;
+}
+
+footer {
+  text-align: center;
+  color: #ccc;
+  padding-top: 80px;
+}
+
+* {
+  box-sizing: border-box;
+}
