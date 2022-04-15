@@ -1,0 +1,14 @@
+{
+  "schemaPath": "./schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "dev": {
+        "url": "https://eclaircie-hasura.caprover.cocaud.dev/v1/graphql",
+        "headers": {
+          "x-hasura-admin-secret": "Ea2KFEoEI20zMKnP09Q6vLoncjWMY6pvyUOnegUmdsDLGhuXYA"
+        },
+        "introspect": true
+      }
+    }
+  }
+}

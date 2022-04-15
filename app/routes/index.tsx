@@ -1,4 +1,4 @@
-import type { MetaFunction, LinksFunction } from "remix";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 
 import stylesUrl from "../styles/index.css";
 

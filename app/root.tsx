@@ -1,12 +1,5 @@
-import {
-  Links, LinksFunction,
-  LiveReload,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  MetaFunction,
-} from "remix";
+import { LinksFunction, MetaFunction } from "@remix-run/node";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 
 import stylesUrl from "./styles/global.css";
 import type { ReactNode} from "react";
