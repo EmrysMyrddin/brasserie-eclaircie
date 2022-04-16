@@ -1,8 +1,7 @@
 import type {ActionFunction, LoaderFunction} from "@remix-run/node";
 import {logout, requireUser} from "~/services/session.server";
 import {json} from "@remix-run/node";
-import {Outlet} from "react-router";
-import {Form, useLoaderData} from "@remix-run/react";
+import {Form, Outlet, useLoaderData} from "@remix-run/react";
 
 export const loader: LoaderFunction = async ({request}) => {
   const me = await requireUser(request)

@@ -45,3 +45,8 @@ input {
     font-size: 1em;
     width: 100%;
 }
+
+.form-error {
+    color: orangered;
+    text-align: center;
+}

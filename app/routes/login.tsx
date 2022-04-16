@@ -1,8 +1,8 @@
-import {Form, useTransition} from "@remix-run/react";
+import {Form, useActionData, useTransition} from "@remix-run/react";
 import type {ActionFunction, LinksFunction} from "@remix-run/node";
 import styles from '~/styles/login.css'
 import {createUserSession, login} from "~/services/session.server";
-import {json, redirect} from "@remix-run/node";
+import {json} from "@remix-run/node";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: styles }];
@@ -41,17 +41,18 @@ export const action: ActionFunction = async ({request}) => {
 
 export default function LoginScreen() {
   const transition = useTransition()
-  console.log(transition)
+  const data = useActionData<ActionData>()
   return (
     <Form method="post">
       <h2>Login</h2>
       <fieldset>
         <label htmlFor="email-input">Email :</label>
-        <input name="email" type="email" id="email-input"/>
+        <input name="email" type="email" id="email-input" defaultValue={data?.fields?.email}/>
         <label htmlFor="password-input">Password :</label>
-        <input name="password" type="password" id="password-input"/>
+        <input name="password" type="password" id="password-input" defaultValue={data?.fields?.password}/>
       </fieldset>
-      <button type="submit" disabled={!!transition.submission}>Login</button>
+      {data?.formError && <p className="form-error">{data.formError}</p>}
+      <button type="submit" disabled={!!transition.submission}>Se connecter</button>
     </Form>
   )
 }
