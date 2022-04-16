@@ -1,4 +1,4 @@
-import {Form, useActionData, useTransition} from "@remix-run/react";
+import {Form, useActionData, useLoaderData, useSearchParams, useTransition} from "@remix-run/react";
 import type {ActionFunction, LinksFunction} from "@remix-run/node";
 import styles from '~/styles/login.css'
 import {createUserSession, login} from "~/services/session.server";
@@ -41,10 +41,12 @@ export const action: ActionFunction = async ({request}) => {
 
 export default function LoginScreen() {
   const transition = useTransition()
+  const [searchParams] = useSearchParams();
   const data = useActionData<ActionData>()
   return (
     <Form method="post">
       <h2>Login</h2>
+      <input type="hidden" name="redirectTo" value={searchParams.get("redirectTo") ?? undefined}/>
       <fieldset>
         <label htmlFor="email-input">Email :</label>
         <input name="email" type="email" id="email-input" defaultValue={data?.fields?.email}/>
