@@ -1,0 +1,59 @@
+.backoffice-screen {
+    display: grid;
+    grid-template: 4em 1fr / 10em 1fr;
+    height: 100vh;
+}
+
+.backoffice-header {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: min-content min-content 1fr;
+    gap: 1em;
+    align-items: center;
+    border-bottom: 1px gray solid;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.backoffice-header button {
+    justify-self: end;
+    width: fit-content;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    box-shadow: lightgray 5px 0 20px;
+}
+
+nav a {
+    padding: 0.5em 0.5em 0.5em 1em;
+    text-decoration: none;
+    color: black;
+    border-bottom: gray 1px solid;
+}
+
+nav a.active {
+    background: var(--SECONDARY_COLOR);
+    color: white;
+}
+
+main {
+    overflow: auto;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+
+input, textarea, select {
+    padding: 0.2em;
+    font-size: 1em;
+}

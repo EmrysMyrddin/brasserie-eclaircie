@@ -1,6 +1,11 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type {LinksFunction, LoaderFunction, MetaFunction} from "@remix-run/node";
 
 import stylesUrl from "../styles/index.css";
+import {Link, useCatch, useLoaderData} from "@remix-run/react";
+import {Beer, beerLinks} from "~/components/beer/beer";
+import {query} from "~/services/graphql.server";
+import {gql} from "@urql/core";
+import {json} from "@remix-run/node";
 
 export let meta: MetaFunction = () => {
   return {
@@ -10,10 +15,21 @@ export let meta: MetaFunction = () => {
 };
 
 export let links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: stylesUrl }];
+  return [{ rel: "stylesheet", href: stylesUrl }, ...beerLinks];
 };
 
+export const loader: LoaderFunction = async () => {
+  return json(await query(gql`
+    query all_beers {
+      beers(order_by: {created_at: asc}) {
+        id, name, short_description, image_url
+      }
+    }
+  `))
+}
+
 export default function Index() {
+  const {beers} = useLoaderData()
   return (
     <div className="container">
       <nav>
@@ -37,13 +53,12 @@ export default function Index() {
             Est germanus vox, cesaris.<br/>
             Sensorems tolerare in vasa!<br/>
           </p>
-          <a href="/blog">Visiter</a>
+          <Link to="/blog">Visiter</Link>
         </article>
         <section id="bières">
-          <Beer name="Bière de l'Hiver" id="1"/>
-          <Beer name="Bière de l'Été" id="2"/>
-          <Beer name="Bière de l'Automne" id="3"/>
-          <Beer name="Bière du Printemps" id="4"/>
+          {beers.map((beer: any) => (
+            <Beer beer={beer} key={beer.id}/>
+          ))}
         </section>
         <section id="engagements">
           <h3>Engagements</h3>
@@ -80,20 +95,25 @@ export default function Index() {
 }
 
 
-function Beer({ name, id }: { name: string, id: string }) {
+
+export function CatchBoundary() {
+  const caught = useCatch();
+  
   return (
-    <article className="beer">
-      <h4 style={{gridArea: "title"}}>{name}</h4>
-      <p style={{gridArea: "description"}}>
-        Lunas experimentum, tanquam audax spatii.<br/>
-        Try mashing loaf rinseed with champaign, varnished with vodka.<br/>
-        Est germanus vox, cesaris.<br/>
-        Sensorems tolerare in vasa!<br/>
-      </p>
-      <a style={{gridArea: "more"}} href={`/bières/${id}`}>
-        En savoir plus
-      </a>
-      <img style={{gridArea: "photo"}} alt={`Photographie de la bière ${name}`} src="/images/biere.webp"/>
-    </article>
-  )
+    <div>
+      Oups ! Un problème est survenu :-(
+      <pre>
+        {JSON.stringify(caught.data, null, 2)}
+      </pre>
+    </div>
+  );
+}
+
+export function ErrorBoundary({ error }: {error: Error}) {
+  return (
+    <div>
+      <p>Oups ! Une erreur est survenue :-(</p>
+      <pre>{error.stack}</pre>
+    </div>
+  );
 }

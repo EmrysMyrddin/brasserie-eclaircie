@@ -1,7 +1,12 @@
-import type {ActionFunction, LoaderFunction} from "@remix-run/node";
+import type {ActionFunction, LoaderFunction, LinksFunction} from "@remix-run/node";
 import {logout, requireUser} from "~/services/session.server";
 import {json} from "@remix-run/node";
-import {Form, Outlet, useLoaderData} from "@remix-run/react";
+import {Form, NavLink, Outlet, useLoaderData} from "@remix-run/react";
+import styles from "~/styles/backoffice/backoffice.css";
+
+export const links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: styles }];
+}
 
 export const loader: LoaderFunction = async ({request}) => {
   const me = await requireUser(request)
@@ -15,12 +20,20 @@ export const action: ActionFunction = async ({request}) => {
 export default function BackofficeLayout() {
   const { me: {email}} = useLoaderData()
   return (
-    <div>
-      <Form method="post">
-        {email}
-        <button type="submit" name="logout">Déconnection</button>
+    <div className="backoffice-screen">
+      <Form method="post" className="backoffice-header">
+        <h1>Backoffice</h1>
+        <div>{email}</div>
+        <button type="submit" name="logout">Déconnexion</button>
       </Form>
-      <Outlet />
+      <nav>
+        <NavLink to="beers">Bières</NavLink>
+        <NavLink to="users">Utilisateurs</NavLink>
+        <NavLink to="blog">Blog</NavLink>
+      </nav>
+      <main>
+        <Outlet />
+      </main>
     </div>
   )
 }
