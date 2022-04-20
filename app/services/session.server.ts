@@ -3,7 +3,7 @@ import {
   createCookieSessionStorage,
   redirect,
 } from "@remix-run/node";
-import {query} from "~/services/graphql.server";
+import {mutation, query} from "~/services/graphql.server";
 import {gql} from "@urql/core";
 import {env} from "~/services/utils";
 
@@ -97,5 +97,11 @@ export async function requireUser(request: Request, redirectTo: string = new URL
     }`,
     {id}
   )
+  if(!user) {
+    const searchParams = new URLSearchParams([
+      ["redirectTo", redirectTo],
+    ]);
+    throw redirect(`/login?${searchParams}`);
+  }
   return user
 }

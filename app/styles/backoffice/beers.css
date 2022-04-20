@@ -31,30 +31,5 @@
 }
 
 button {
-    background: var(--SECONDARY_COLOR);
-    border-radius: 0.2em;
-    border: grey;
-    cursor: pointer;
-    padding: 0.5em;
-    font-size: 1em;
-    text-align: center;
-    color: white;
     width: calc(100% - 1em);
-    margin: 0.5em;
-}
-
-button:active {
-    background: #33578d;
-}
-
-button:disabled {
-    background: #5f6267;
-}
-
-button[value="delete"] {
-    background: #ff0700;
-}
-
-button[value="delete"]:active {
-    background: #7c0300;
 }

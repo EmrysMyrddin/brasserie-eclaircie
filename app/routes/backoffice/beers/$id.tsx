@@ -5,8 +5,10 @@ import {getFormData} from "~/services/utils";
 import {mutation, query} from "~/services/graphql.server";
 import {gql} from "@urql/core";
 import {useState} from "react";
+import {requireUserId} from "~/services/session.server";
 
-export const loader: LoaderFunction = async ({params: {id}}) => {
+export const loader: LoaderFunction = async ({request, params: {id}}) => {
+  await requireUserId(request)
   const {beer} = await query(gql`
     query get_beer($id: uuid!) {
       beer: beers_by_pk(id: $id) {
@@ -20,6 +22,7 @@ export const loader: LoaderFunction = async ({params: {id}}) => {
 }
 
 export const action: ActionFunction = async ({request}) => {
+  await requireUserId(request)
   const {action, id, ...beer} = await getFormData(request)
   
   switch (action) {

@@ -5,12 +5,14 @@ import {getFormData} from "~/services/utils";
 import {mutation, query} from "~/services/graphql.server";
 import {gql} from "@urql/core";
 import {json, redirect} from "@remix-run/node";
+import {requireUserId} from "~/services/session.server";
 
 export const links: LinksFunction = () => {
   return [{ rel: "stylesheet", href: styles }];
 }
 
-export const loader: LoaderFunction = async () => {
+export const loader: LoaderFunction = async ({request}) => {
+  await requireUserId(request)
   const {beers} = await query(gql`
     query all_beers {
       beers(order_by: {created_at: asc}) { id, name }
@@ -21,6 +23,7 @@ export const loader: LoaderFunction = async () => {
 }
 
 export const action: ActionFunction = async ({ request }) => {
+  await requireUserId(request)
   const { beer } = await mutation(
     gql`
       mutation new_beer {

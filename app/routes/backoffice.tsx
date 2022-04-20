@@ -1,5 +1,5 @@
 import type {ActionFunction, LoaderFunction, LinksFunction} from "@remix-run/node";
-import {logout, requireUser} from "~/services/session.server";
+import {logout, requireUser, requireUserId} from "~/services/session.server";
 import {json} from "@remix-run/node";
 import {Form, Link, NavLink, Outlet, useLoaderData} from "@remix-run/react";
 import styles from "~/styles/backoffice/backoffice.css";
@@ -14,6 +14,7 @@ export const loader: LoaderFunction = async ({request}) => {
 }
 
 export const action: ActionFunction = async ({request}) => {
+  await requireUserId(request)
   return logout(request)
 }
 
