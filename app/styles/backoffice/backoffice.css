@@ -7,12 +7,18 @@
 .backoffice-header {
     grid-column: span 2;
     display: grid;
-    grid-template-columns: min-content min-content 1fr;
+    grid-template-columns: repeat(2, max-content) 1fr;
     gap: 1em;
     align-items: center;
     border-bottom: 1px gray solid;
     padding-left: 1em;
     padding-right: 1em;
+}
+
+.backoffice-header .authentication {
+    display: flex;
+    align-items: center;
+    justify-self: end;
 }
 
 h1 {
@@ -21,7 +27,6 @@ h1 {
 }
 
 .backoffice-header button {
-    justify-self: end;
     width: fit-content;
 }
 

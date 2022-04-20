@@ -42,21 +42,21 @@ main {
     overflow: auto;
 }
 
-h1 {
+main h1 {
     position: absolute;
     bottom: 140px;
     background-color: rgba(255,255,255,0.5);
     margin-left: 1em;
 }
 
-#cover {
+main #cover {
     height: calc(100vh - 170px);
     width: 100%;
     background: url("/images/cover.jpg");
     background-size: cover;
 }
 
-#blog {
+main #blog {
     background-color: var(--SECONDARY_COLOR);
     display: flex;
     align-items: center;
@@ -67,11 +67,11 @@ h1 {
     top: 0;
 }
 
-h1, h2, h3, h4 {
+main h1, h2, h3, h4 {
     font-size: 72px;
 }
 
-#blog a {
+main #blog a {
     background-color: var(--TERTIARY_COLOR);
     border: none;
     border-radius: 15px;
@@ -81,22 +81,26 @@ h1, h2, h3, h4 {
     font-size: 72px;
 }
 
-#bières {
+main #beers {
     padding: 50px;
     gap: 50px;
     display: flex;
     flex-direction: column;
 }
 
-#engagements h3 {
+main #beers article {
+    height: 423px;
+}
+
+main #engagements h3, main #contact h3 {
     text-align: center;
 }
 
-#engagements p {
+main #engagements p, main #contact p {
     padding-left: 50px;
 }
 
-#carte {
+main #carte {
     width: 30%;
     margin: 50px;
 }

@@ -1,7 +1,7 @@
 import type {ActionFunction, LoaderFunction, LinksFunction} from "@remix-run/node";
 import {logout, requireUser} from "~/services/session.server";
 import {json} from "@remix-run/node";
-import {Form, NavLink, Outlet, useLoaderData} from "@remix-run/react";
+import {Form, Link, NavLink, Outlet, useLoaderData} from "@remix-run/react";
 import styles from "~/styles/backoffice/backoffice.css";
 
 export const links: LinksFunction = () => {
@@ -23,8 +23,11 @@ export default function BackofficeLayout() {
     <div className="backoffice-screen">
       <Form method="post" className="backoffice-header">
         <h1>Backoffice</h1>
-        <div>{email}</div>
-        <button type="submit" name="logout">Déconnexion</button>
+        <Link to="/">Aller au site</Link>
+        <div className="authentication">
+          <div>{email}</div>
+          <button type="submit" name="logout">Déconnexion</button>
+        </div>
       </Form>
       <nav>
         <NavLink to="beers">Bières</NavLink>

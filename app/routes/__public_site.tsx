@@ -1,7 +1,7 @@
 import type {LinksFunction, LoaderFunction, MetaFunction} from "@remix-run/node";
 
-import stylesUrl from "../styles/index.css";
-import {Link, useCatch, useLoaderData} from "@remix-run/react";
+import stylesUrl from "~/styles/index.css";
+import {Link, Outlet, useCatch, useLoaderData} from "@remix-run/react";
 import {Beer, beerLinks} from "~/components/beer/beer";
 import {query} from "~/services/graphql.server";
 import {gql} from "@urql/core";
@@ -34,9 +34,9 @@ export default function Index() {
     <div className="container">
       <nav>
         <img alt="logo" id="logo" src="/images/logo.png"/>
-        <a href="#bières">Bières</a>
-        <a>Engagements</a>
-        <a>Contact</a>
+        <Link to="#beers">Bières</Link>
+        <Link to="#engagements">Engagements</Link>
+        <Link to="#contact">Contact</Link>
       </nav>
       <main>
         <h1>
@@ -55,7 +55,7 @@ export default function Index() {
           </p>
           <Link to="/blog">Visiter</Link>
         </article>
-        <section id="bières">
+        <section id="beers">
           {beers.map((beer: any) => (
             <Beer beer={beer} key={beer.id}/>
           ))}
@@ -76,25 +76,25 @@ export default function Index() {
             Est germanus vox, cesaris.<br/>
             Sensorems tolerare in vasa!<br/>
           </p>
-        </section> <section id="engagements">
-        <h3>Nous trouver - Contactez-nous</h3>
-        <p>
-          1 rue de la Bière<br/>
-          Baden<br/>
-          France<br/>
-          <br/>
-          mail: super.mail@gmail.com<br/>
-          <br/>
-          Tel: 01.02.03.04.05
-        </p>
-        <img id="carte" alt="Carte" src="/images/carte.png"/>
-      </section>
+        </section>
+        <section id="contact">
+          <h3>Nous trouver - Contactez-nous</h3>
+          <p>
+            1 rue de la Bière<br/>
+            Baden<br/>
+            France<br/>
+            <br/>
+            mail: super.mail@gmail.com<br/>
+            <br/>
+            Tel: 01.02.03.04.05
+          </p>
+          <img id="carte" alt="Carte" src="/images/carte.png"/>
+        </section>
       </main>
+      <Outlet />
     </div>
   );
 }
-
-
 
 export function CatchBoundary() {
   const caught = useCatch();
@@ -103,17 +103,18 @@ export function CatchBoundary() {
     <div>
       Oups ! Un problème est survenu :-(
       <pre>
-        {JSON.stringify(caught.data, null, 2)}
+        {caught.data.message ?? JSON.stringify(caught.data, null, 2)}
       </pre>
     </div>
   );
 }
 
 export function ErrorBoundary({ error }: {error: Error}) {
+  console.log(error)
   return (
     <div>
       <p>Oups ! Une erreur est survenue :-(</p>
-      <pre>{error.stack}</pre>
+      <pre>{error.stack ?? error.message ?? JSON.stringify(error, null, 2)}</pre>
     </div>
   );
 }
