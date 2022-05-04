@@ -4,12 +4,20 @@
 
 body {
   font-family: Montserrat, sans-serif;
-  font-size: 18px;
+  font-size: 1.3em;
   margin: 0;
   padding: 0;
 
-  --SECONDARY_COLOR: #5B9DFF;
-  --TERTIARY_COLOR: #FFD232;
+  --TEXT_COLOR: #14312E;
+  --PRIMARY_COLOR: #EFE7DA;
+  --PRIMARY_NAV_COLOR: #e8dbc7;
+  --PRIMARY_OPACITY_COLOR: #e8dbc79d;
+  --SECONDARY_COLOR: #A4CEC2;
+  --TERTIARY_COLOR: #F18513;
+  --DANGER_COLOR: #f13813;
+
+  background-color: var(--PRIMARY_COLOR);
+  color: var(--TEXT_COLOR);
 }
 
 footer {
@@ -23,5 +31,5 @@ footer {
 }
 
 .form-error {
-  color: red;
+  color: var(--DANGER_COLOR);
 }

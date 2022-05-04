@@ -39,8 +39,8 @@ nav {
 nav a {
     padding: 0.5em 0.5em 0.5em 1em;
     text-decoration: none;
-    color: black;
-    border-bottom: gray 1px solid;
+    color: var(--TEXT_COLOR);
+    border-bottom: var(--TEXT_COLOR) 1px solid;
 }
 
 nav a.active {
@@ -76,7 +76,7 @@ button {
 }
 
 button:active {
-    background: #33578d;
+    background: var(--SECONDARY_COLOR);
 }
 
 button:disabled, button[value|="delete"]:disabled {
@@ -84,9 +84,9 @@ button:disabled, button[value|="delete"]:disabled {
 }
 
 button[value|="delete"] {
-    background: #ff0700;
+    background: var(--DANGER_COLOR);
 }
 
 button[value|="delete"]:active {
-    background: #7c0300;
+    background: var(--DANGER_COLOR);
 }

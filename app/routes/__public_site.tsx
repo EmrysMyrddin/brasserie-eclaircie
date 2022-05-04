@@ -33,10 +33,29 @@ export default function Index() {
   return (
     <div className="container">
       <nav>
-        <img alt="logo" id="logo" src="/images/logo.png"/>
-        <Link to="#beers">Bières</Link>
-        <Link to="#engagements">Engagements</Link>
-        <Link to="#contact">Contact</Link>
+        <img alt="logo" id="logo" src="/images/logo_eclaircie-brasserie.png"/>
+        <Link to="#beers">
+          <div className="sub-nav-container">
+            <img alt="Bières" id="beer" src="/images/beer.png"/>
+            <p>Bières</p>
+          </div>
+        </Link>
+        <Link to="#engagements">
+          <div className="sub-nav-container">
+            <img alt="Bières" id="beer" src="/images/united.png"/>
+            <p>Engagements</p>
+          </div>
+        </Link>
+        <Link to="#contact">
+          <div className="sub-nav-container">
+            <img alt="Bières" id="beer" src="/images/map.png"/>
+            <p>Contact</p>
+          </div>
+        </Link>
+        <div className="community">
+          <a href="wwww.twitter.com" ><img alt="twitter" id="twitter" src="/images/twitter.png"/></a>
+          <a href="wwww.instagram.com" ><img alt="instagram" id="instagram" src="/images/instagram.png"/></a>
+        </div>
       </nav>
       <main>
         <h1>

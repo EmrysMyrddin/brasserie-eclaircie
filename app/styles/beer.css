@@ -11,12 +11,12 @@
 }
 
 .beer-modal {
-    width: 50vw;
-    height: 50vh;
+    width: 80vw;
+    height: 100vh;
     padding: 1em;
     border-radius: 1em;
     display: grid;
-    grid-template-columns: min-content 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 1em;
     align-items: center;
 }
@@ -25,5 +25,13 @@
     background: rgba(255, 255, 255, 0.4);
     border-radius: 1em;
     backdrop-filter: blur(7px);
-    padding: 1em;
+    padding: 2em;
+    margin-left: auto;
+    overflow: auto;
+    height: 80%;
+    width: 100%;
+}
+
+.beer-modal img {
+    justify-self: end;
 }

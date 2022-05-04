@@ -9,26 +9,25 @@
     width: 100vw;
     height: 100vh;
     grid-template-rows: 1fr;
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: min-content 1fr;
 }
 
 nav {
-    background-color: #DADADA;
+    background-color: var(--PRIMARY_NAV_COLOR);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 25px;
-    gap: 36px;
+    padding: 1em;
+    gap: 2em;
 }
 
 nav > a {
-    height: 100px;
-    width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #C4C4C4;
-    font-size: 16px;
+    color: var(--TEXT_COLOR) ;
+    font-size: 0.7em;
+    text-decoration: none;
 }
 
 #logo {
@@ -44,9 +43,10 @@ main {
 
 main h1 {
     position: absolute;
-    bottom: 140px;
-    background-color: rgba(255,255,255,0.5);
+    bottom: 170px;
+    background-color: var(--PRIMARY_OPACITY_COLOR);
     margin-left: 1em;
+    padding: 0.3em;
 }
 
 main #cover {
@@ -68,7 +68,7 @@ main #blog {
 }
 
 main h1, h2, h3, h4 {
-    font-size: 72px;
+    font-size: 3em;
 }
 
 main #blog a {
@@ -78,7 +78,7 @@ main #blog a {
     color: white;
     padding: 10px 50px 0;
     text-decoration: none;
-    font-size: 72px;
+    font-size: 3em;
 }
 
 main #beers {
@@ -89,7 +89,7 @@ main #beers {
 }
 
 main #beers article {
-    height: 423px;
+    height: max-content;
 }
 
 main #engagements h3, main #contact h3 {
@@ -103,4 +103,26 @@ main #engagements p, main #contact p {
 main #carte {
     width: 30%;
     margin: 50px;
+}
+
+.sub-nav-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sub-nav-container img {
+    height: 5.5em;
+}
+
+.community {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+.community a img {
+    height: 1.5em;
 }
