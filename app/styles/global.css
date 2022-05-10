@@ -15,6 +15,7 @@ body {
   --SECONDARY_COLOR: #A4CEC2;
   --TERTIARY_COLOR: #F18513;
   --DANGER_COLOR: #f13813;
+  --DANGER_COLOR_DARKEN: #b2290e;
 
   background-color: var(--PRIMARY_COLOR);
   color: var(--TEXT_COLOR);
