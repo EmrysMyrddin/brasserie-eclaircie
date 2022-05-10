@@ -88,5 +88,5 @@ button[value|="delete"] {
 }
 
 button[value|="delete"]:active {
-    background: var(--DANGER_COLOR);
+    background: var(--DANGER_COLOR_DARKEN);
 }
