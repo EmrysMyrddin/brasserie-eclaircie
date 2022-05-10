@@ -1,4 +1,4 @@
-import {ButtonHTMLAttributes, HTMLProps} from "react";
+import type {ButtonHTMLAttributes} from "react";
 import {useTransition} from "@remix-run/react";
 
 type ButtonProps = ButtonHTMLAttributes<never>
