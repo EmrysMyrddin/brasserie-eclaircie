@@ -76,11 +76,11 @@ button {
 }
 
 button:active {
-    background: var(--SECONDARY_COLOR);
+    background: var(--SECONDARY_COLOR_DARKEN);
 }
 
 button:disabled, button[value|="delete"]:disabled {
-    background: #5f6267;
+    background: var(--DISABLED_COLOR);
 }
 
 button[value|="delete"] {
