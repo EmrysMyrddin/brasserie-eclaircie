@@ -8,3 +8,5 @@ node_modules
 
 .yarn/cache
 schema.graphql
+
+/app/tailwind.css

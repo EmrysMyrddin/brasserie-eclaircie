@@ -1,51 +1,28 @@
 .beer h4 {
-    padding: 0;
-    margin: 0;
     -webkit-line-clamp: 2;
-}
-
-.beer {
-    padding: 1em;
-    display: grid;
-    column-gap: 80px;
-    grid-template-rows: min-content 1fr min-content;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-            "title photo"
-            "description photo"
-            "more photo";
-    text-align: end;
-}
-
-.beer:nth-child(even) {
-    grid-template-areas:
-            "photo title"
-            "photo description"
-            "photo more";
-    text-align: start;
-}
-
-.beer a {
-    background-color: var(--TERTIARY_COLOR);
-    border: none;
-    border-radius: 15px;
-    color: white;
-    padding: 15px 30px;
-    text-decoration: none;
-    justify-self: end;
-}
-
-.beer:nth-child(even) a {
-    justify-self: start;
-}
-
-.beer img {
-    width: 100%;
-}
-
-.beer h4 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.beer {
+    display: grid;
+    column-gap: 40px;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-columns: 1fr 300px;
+    grid-template-areas:
+        "title photo"
+        "description photo"
+        "description formats";
+    text-align: end;
+}
+
+.beer:nth-child(even) {
+    grid-template-columns: 300px 1fr;
+    grid-template-areas:
+        "photo title"
+        "photo description"
+        "formats description";
+    text-align: start;
 }

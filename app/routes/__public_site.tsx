@@ -1,11 +1,11 @@
-import type {LinksFunction, LoaderFunction, MetaFunction} from "@remix-run/node";
+import type { LinksFunction, LoaderFunction, MetaFunction } from "@remix-run/node";
 
 import stylesUrl from "~/styles/index.css";
-import {Link, Outlet, useCatch, useLoaderData} from "@remix-run/react";
-import {Beer, beerLinks} from "~/components/beer/beer";
-import {query} from "~/services/graphql.server";
-import {gql} from "@urql/core";
-import {json} from "@remix-run/node";
+import { Link, Outlet, useCatch, useLoaderData } from "@remix-run/react";
+import { Beer, beerLinks } from "~/components/beer/beer";
+import { query } from "~/services/graphql.server";
+import { gql } from "@urql/core";
+import { json } from "@remix-run/node";
 
 export let meta: MetaFunction = () => {
   return {
@@ -29,95 +29,88 @@ export const loader: LoaderFunction = async () => {
 }
 
 export default function Index() {
-  const {beers} = useLoaderData()
+  const { beers } = useLoaderData()
   return (
-    <div className="container">
-      <nav>
-        <img alt="logo" id="logo" src="/images/logo_eclaircie-brasserie.png"/>
-        <Link to="#beers">
-          <div className="sub-nav-container">
-            <img alt="Bières" id="beer" src="/images/beer.png"/>
-            <p>Bières</p>
-          </div>
-        </Link>
-        <Link to="#engagements">
-          <div className="sub-nav-container">
-            <img alt="Bières" id="beer" src="/images/united.png"/>
-            <p>Engagements</p>
-          </div>
-        </Link>
-        <Link to="#contact">
-          <div className="sub-nav-container">
-            <img alt="Bières" id="beer" src="/images/map.png"/>
-            <p>Contact</p>
-          </div>
-        </Link>
-        <div className="community">
-          <a href="wwww.twitter.com" ><img alt="twitter" id="twitter" src="/images/twitter.png"/></a>
-          <a href="wwww.instagram.com" ><img alt="instagram" id="instagram" src="/images/instagram.png"/></a>
+    <div className="space-y-24">
+      <header className="flex flex-col sticky -top-[375px]">
+        <div className="w-[1024px] m-auto p-12 flex flex-col">
+          <img className="aspect-[10/3] bg-slate-500" />
         </div>
-      </nav>
-      <main>
-        <h1>
-          La<br/>
-          brasserie<br/>
-          de l'éclaircie
-        </h1>
-        <div id="cover" />
-        <article id="blog">
-          <h3>Le blog</h3>
-          <p>
-            Lunas experimentum, tanquam audax spatii.<br/>
-            Try mashing loaf rinseed with champaign, varnished with vodka.<br/>
-            Est germanus vox, cesaris.<br/>
-            Sensorems tolerare in vasa!<br/>
-          </p>
-          <Link to="/blog">Visiter</Link>
-        </article>
-        <section id="beers">
+
+        <div className="bg-white">
+          <nav className="w-[1024px] m-auto flex flex-row justify-between uppercase py-4 items-center relative">
+            <img src="/images/logo_eclaircie-brasserie.png" className="h-14 absolute -left-20" />
+            <Link to="#beers">Bières</Link>
+            <Link to="#engagement">Engagements</Link>
+            <Link to="#contact">Contact</Link>
+            <Link to="#blog">Blog</Link>
+          </nav>
+        </div>
+      </header >
+
+      <main className="space-y-24">
+
+        <section id="beers" className="w-[1024px] mx-auto space-y-12 scroll-m-24">
           {beers.map((beer: any) => (
-            <Beer beer={beer} key={beer.id}/>
+            <Beer beer={beer} key={beer.id} />
           ))}
         </section>
-        <section id="engagements">
-          <h3>Engagements</h3>
-          <p>
-            Lunas experimentum, tanquam audax spatii.<br/>
-            Try mashing loaf rinseed with champaign, varnished with vodka.<br/>
-            Est germanus vox, cesaris.<br/>
-            Sensorems tolerare in vasa!<br/><br/><br/>
-            Lunas experimentum, tanquam audax spatii.<br/>
-            Try mashing loaf rinseed with champaign, varnished with vodka.<br/>
-            Est germanus vox, cesaris.<br/>
-            Sensorems tolerare in vasa!<br/><br/>
-            Lunas experimentum, tanquam audax spatii.<br/>
-            Try mashing loaf rinseed with champaign, varnished with vodka.<br/>
-            Est germanus vox, cesaris.<br/>
-            Sensorems tolerare in vasa!<br/>
+
+        <section id="engagement" className="bg-zinc-300 p-24 scroll-m-24">
+          <p className="w-[1024px] m-auto text-xs [column-count:2]">
+            Lunas experimentum, tanquam audax spatii.<br />
+            Try mashing loaf rinseed with champaign, varnished with vodka.<br />
+            Est germanus vox, cesaris.<br />
+            Sensorems tolerare in vasa!<br /><br /><br />
+            Lunas experimentum, tanquam audax spatii.<br />
+            Try mashing loaf rinseed with champaign, varnished with vodka.<br />
+            Est germanus vox, cesaris.<br />
+            Sensorems tolerare in vasa!<br /><br />
+            Lunas experimentum, tanquam audax spatii.<br />
+            Try mashing loaf rinseed with champaign, varnished with vodka.<br />
+            Est germanus vox, cesaris.<br />
+            Sensorems tolerare in vasa!<br />
           </p>
         </section>
-        <section id="contact">
-          <h3>Nous trouver - Contactez-nous</h3>
-          <p>
-            1 rue de la Bière<br/>
-            Baden<br/>
-            France<br/>
-            <br/>
-            mail: super.mail@gmail.com<br/>
-            <br/>
-            Tel: 01.02.03.04.05
+
+        <section id="contact" className="w-[1024px] mx-auto grid grid-cols-[330px_1fr_1fr] gap-36 text-2xl scroll-m-24">
+          <img id="carte" alt="Carte" src="/images/carte.png" />
+          <p className="text-center">
+            1 rue de le Bière<br />
+            2900 Baden<br />
+            France<br />
+            <br />
+            <br />
+            01.02.03.04.05
+            contact@eclaircie.fr
           </p>
-          <img id="carte" alt="Carte" src="/images/carte.png"/>
+
+          <p>
+            Lun. : 10H - 19H<br />
+            Mar. : 10H - 19H<br />
+            Mer. : 10H - 19H<br />
+            Jeu. : 10H - 19H<br />
+            Ven. : 10H - 19H<br />
+            Sam. : FERMÉ<br />
+            Dim. : FERMÉ<br />
+          </p>
         </section>
+
+        <footer className="bg-zinc-300 p-12">
+          <p className="flex w-[1024px] m-auto items-center justify-center gap-6">
+            <a href="https://www.twitter.com" ><img alt="twitter" id="twitter" className="h-10" src="/images/twitter.png" /></a>
+            <a href="https://www.instagram.com" ><img alt="instagram" id="instagram" className="h-10" src="/images/instagram.png" /></a>
+          </p>
+        </footer>
+
       </main>
-      <Outlet />
-    </div>
+    </div >
   );
 }
 
 export function CatchBoundary() {
   const caught = useCatch();
-  
+
   return (
     <div>
       Oups ! Un problème est survenu :-(
@@ -128,7 +121,7 @@ export function CatchBoundary() {
   );
 }
 
-export function ErrorBoundary({ error }: {error: Error}) {
+export function ErrorBoundary({ error }: { error: Error }) {
   console.log(error)
   return (
     <div>

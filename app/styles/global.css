@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: Montserrat, sans-serif;
+  font-family: Edmondsans, sans-serif;
   font-size: 1.3em;
   margin: 0;
   padding: 0;
@@ -19,14 +19,12 @@ body {
   --DANGER_COLOR_DARKEN: #b2290e;
   --DISABLED_COLOR: #5f6267;
 
-  background-color: var(--PRIMARY_COLOR);
+  /* background-color: var(--PRIMARY_COLOR); */
   color: var(--TEXT_COLOR);
 }
 
-footer {
-  text-align: center;
-  color: #ccc;
-  padding-top: 80px;
+nav {
+  font-family: 'Costa Ptf';
 }
 
 * {
