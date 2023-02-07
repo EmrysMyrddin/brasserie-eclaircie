@@ -5,10 +5,13 @@
   "license": "",
   "sideEffects": false,
   "scripts": {
-    "build": "cross-env NODE_ENV=production remix build",
-    "dev": "cross-env NODE_ENV=development remix dev",
+    "build": "cross-env NODE_ENV=production run-s -n \"build:*\"",
+    "build:css": "yarn tailwindcss -o ./app/styles/tailwind.css",
+    "build:remix": "yarn remix build",
+    "dev": "cross-env NODE_ENV=development run-p \"dev:*\"",
+    "dev:css": "yarn build:css --watch",
+    "dev:remix": "yarn remix dev",
     "start": "cross-env NODE_ENV=production remix-serve build",
-    "css": "yarn tailwindcss -o ./app/tailwind.css --watch",
     "deploy": "caprover deploy -d"
   },
   "dependencies": {
@@ -33,6 +36,7 @@
     "@types/react": "^17.0.53",
     "@types/react-dom": "^17.0.18",
     "eslint": "^8.32.0",
+    "npm-run-all": "^4.1.5",
     "typescript": "^4.9.4"
   },
   "engines": {

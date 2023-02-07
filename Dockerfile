@@ -7,7 +7,6 @@ COPY yarn.lock package.json .yarnrc.yml ./
 RUN yarn
 
 COPY . .
-RUN yarn css
 RUN yarn build
 
 EXPOSE 3000

@@ -9,4 +9,4 @@ node_modules
 .yarn/cache
 schema.graphql
 
-/app/tailwind.css
+/app/styles/tailwind.css

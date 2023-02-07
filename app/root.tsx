@@ -1,9 +1,9 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
-import tailwind from "./tailwind.css";
+import tailwind from "./styles/tailwind.css";
 
 import stylesUrl from "./styles/global.css";
-import type { ReactNode} from "react";
+import type { ReactNode } from "react";
 
 export const meta: MetaFunction = () => {
   return { title: "Brasserie l'Éclaircie" };
@@ -19,12 +19,12 @@ export let links: LinksFunction = () => {
 export default function App() {
   return (
     <Document>
-      <Outlet/>
+      <Outlet />
     </Document>
   )
 }
 
-export function Document({children}: { children: ReactNode }) {
+export function Document({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
