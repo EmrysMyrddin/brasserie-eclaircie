@@ -57,7 +57,7 @@ export default function Index() {
         </section>
 
         <section id="engagement" className="bg-[#ad7725ff] text-white p-24 scroll-m-24">
-          <p className="w-[1024px] m-auto text-sm [column-count:2]">
+          <p className="w-[1024px] m-auto text-base [column-count:2]">
             Lunas experimentum, tanquam audax spatii.<br />
             Try mashing loaf rinseed with champaign, varnished with vodka.<br />
             Est germanus vox, cesaris.<br />
