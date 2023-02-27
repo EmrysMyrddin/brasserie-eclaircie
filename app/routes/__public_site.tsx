@@ -33,9 +33,9 @@ export default function Index() {
   return (
     <div className="space-y-24">
       <header className="flex flex-col sticky -top-[375px]">
-        <div className="w-[1024px] m-auto p-12 flex flex-col">
-          <img className="aspect-[10/3] bg-slate-500" />
-        </div>
+        <h1 className="w-[1024px] m-auto p-12 flex flex-col">
+          <img className="aspect-[10/3]" src="/images/baniere_verte.svg" alt="L'Éclaircie, Brasserie alternative du Morbihan" />
+        </h1>
 
         <div className="bg-white">
           <nav className="w-[1024px] m-auto flex flex-row justify-between uppercase py-4 items-center relative">
@@ -56,8 +56,8 @@ export default function Index() {
           ))}
         </section>
 
-        <section id="engagement" className="bg-zinc-300 p-24 scroll-m-24">
-          <p className="w-[1024px] m-auto text-xs [column-count:2]">
+        <section id="engagement" className="bg-[#ad7725ff] text-white p-24 scroll-m-24">
+          <p className="w-[1024px] m-auto text-sm [column-count:2]">
             Lunas experimentum, tanquam audax spatii.<br />
             Try mashing loaf rinseed with champaign, varnished with vodka.<br />
             Est germanus vox, cesaris.<br />
@@ -96,7 +96,7 @@ export default function Index() {
           </p>
         </section>
 
-        <footer className="bg-zinc-300 p-12">
+        <footer className="bg-[#ad7725ff] p-12">
           <p className="flex w-[1024px] m-auto items-center justify-center gap-6">
             <a href="https://www.twitter.com" ><img alt="twitter" id="twitter" className="h-10" src="/images/twitter.png" /></a>
             <a href="https://www.instagram.com" ><img alt="instagram" id="instagram" className="h-10" src="/images/instagram.png" /></a>
