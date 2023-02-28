@@ -3,3 +3,52 @@
  * will get unloaded, so don't worry so much about conflicting styles between
  * pages!
  */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav a {
+    font-family: costa, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+body {
+    font-family: 'Edmondsans Regular', serif;
+}
+
+@font-face {
+    font-family: costa;
+    src: url('/fonts/costaptf-demi-webfont.woff2') format('woff2'),
+        url('/fonts/costaptf-demi-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Edmondsans Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Edmondsans Regular'), url('/fonts/EdmondsansRegular_web.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Edmondsans Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Edmondsans Medium'), url('/fonts/EdmondsansMedium_web.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Edmondsans Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Edmondsans Bold'), url('/fonts/EdmondsansBold_web.woff') format('woff');
+}
