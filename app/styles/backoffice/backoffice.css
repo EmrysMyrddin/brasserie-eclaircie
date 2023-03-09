@@ -58,15 +58,20 @@ label {
     margin-bottom: 2em;
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
     padding: 0.2em;
     font-size: 1em;
 }
 
-button {
-    background: var(--SECONDARY_COLOR);
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    background-color: var(--SECONDARY_COLOR);
     border-radius: 0.2em;
-    border: grey;
+    border: 1px solid grey;
     cursor: pointer;
     padding: 0.5em;
     font-size: 1em;
@@ -79,7 +84,8 @@ button:active {
     background: var(--SECONDARY_COLOR_DARKEN);
 }
 
-button:disabled, button[value|="delete"]:disabled {
+button:disabled,
+button[value|="delete"]:disabled {
     background: var(--DISABLED_COLOR);
 }
 

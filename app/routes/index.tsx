@@ -22,7 +22,7 @@ export const loader: LoaderFunction = async () => {
   return json(await query(gql`
     query all_beers {
       beers(order_by: {created_at: asc}) {
-        id, name, short_description, image_url
+        id, name, short_description, image_url, color
       }
     }
   `))
@@ -31,28 +31,25 @@ export const loader: LoaderFunction = async () => {
 export default function Index() {
   const { beers } = useLoaderData()
   return (
-    <div className="space-y-24">
-      <header className="flex flex-col sticky -top-[375px]">
-        <h1 className="w-[1024px] m-auto p-12 flex flex-col">
+    <div>
+      <header className="bg-white sticky -top-0">
+        <nav className="w-[1024px] m-auto flex flex-row justify-between uppercase py-6 items-center relative text-4xl">
+          <img src="/images/logo_eclaircie-brasserie.png" className="h-20 absolute -left-24" />
+          <Link to="#beers">Les bières</Link>
+          <Link to="#engagement">Les engagements</Link>
+          <Link to="#contact">Contact</Link>
+          <Link to="#blog">Blog</Link>
+        </nav>
+      </header >
+
+      <main className="">
+        <h1 className="w-full p-12 flex flex-col">
           <img className="aspect-[10/3]" src="/images/baniere_verte.svg" alt="L'Éclaircie, Brasserie alternative du Morbihan" />
         </h1>
 
-        <div className="bg-white">
-          <nav className="w-[1024px] m-auto flex flex-row justify-between uppercase py-4 items-center relative">
-            <img src="/images/logo_eclaircie-brasserie.png" className="h-14 absolute -left-20" />
-            <Link to="#beers">Bières</Link>
-            <Link to="#engagement">Engagements</Link>
-            <Link to="#contact">Contact</Link>
-            <Link to="#blog">Blog</Link>
-          </nav>
-        </div>
-      </header >
-
-      <main className="space-y-24">
-
-        <section id="beers" className="w-[1024px] mx-auto space-y-12 scroll-m-24">
-          {beers.map((beer: any) => (
-            <Beer beer={beer} key={beer.id} />
+        <section id="beers" className="scroll-m-24">
+          {beers.map((beer: any, i: number) => (
+            <Beer beer={beer} key={beer.id} previousBeer={i > 0 ? beers[i - 1] : null} className={i === beers.length - 1 ? 'pb-24' : ''} />
           ))}
         </section>
 
@@ -73,7 +70,7 @@ export default function Index() {
           </p>
         </section>
 
-        <section id="contact" className="w-[1024px] mx-auto grid grid-cols-[330px_1fr_1fr] gap-36 text-2xl scroll-m-24">
+        <section id="contact" className="py-24 w-[1024px] mx-auto grid grid-cols-[330px_1fr_1fr] gap-36 text-2xl scroll-m-24">
           <img id="carte" alt="Carte" src="/images/carte.png" />
           <p className="text-center">
             1 rue de le Bière<br />

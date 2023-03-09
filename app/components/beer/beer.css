@@ -6,7 +6,7 @@
     text-overflow: ellipsis;
 }
 
-.beer {
+.beer article {
     display: grid;
     column-gap: 40px;
     grid-template-rows: min-content 1fr min-content;
@@ -18,7 +18,7 @@
     text-align: end;
 }
 
-.beer:nth-child(even) {
+.beer:nth-child(even) article {
     grid-template-columns: 300px 1fr;
     grid-template-areas:
         "photo title"
