@@ -6,6 +6,13 @@ import { Beer, beerLinks } from "~/components/beer/beer";
 import { query } from "~/services/graphql.server";
 import { gql } from "@urql/core";
 import { json } from "@remix-run/node";
+import { marked } from 'marked'
+
+marked.setOptions({
+  gfm: true,
+  breaks: true,
+  xhtml: true,
+})
 
 export let meta: MetaFunction = () => {
   return {
@@ -19,17 +26,23 @@ export let links: LinksFunction = () => {
 };
 
 export const loader: LoaderFunction = async () => {
-  return json(await query(gql`
+  const { beers, engagement: [engagement] } = await query(gql`
     query all_beers {
       beers(order_by: {created_at: asc}) {
         id, name, short_description, image_url, color
       }
+      engagement {
+        content
+      }
     }
-  `))
+  `)
+  return json({ beers, engagement })
 }
 
 export default function Index() {
-  const { beers } = useLoaderData()
+  const { beers, engagement } = useLoaderData()
+  const engagementHTML = marked.parseInline(engagement.content)
+  console.log(engagement, engagementHTML)
   return (
     <div>
       <header className="bg-white sticky -top-0">
@@ -54,20 +67,7 @@ export default function Index() {
         </section>
 
         <section id="engagement" className="bg-[#ad7725ff] text-white p-24 scroll-m-24">
-          <p className="w-[1024px] m-auto text-base [column-count:2]">
-            Lunas experimentum, tanquam audax spatii.<br />
-            Try mashing loaf rinseed with champaign, varnished with vodka.<br />
-            Est germanus vox, cesaris.<br />
-            Sensorems tolerare in vasa!<br /><br /><br />
-            Lunas experimentum, tanquam audax spatii.<br />
-            Try mashing loaf rinseed with champaign, varnished with vodka.<br />
-            Est germanus vox, cesaris.<br />
-            Sensorems tolerare in vasa!<br /><br />
-            Lunas experimentum, tanquam audax spatii.<br />
-            Try mashing loaf rinseed with champaign, varnished with vodka.<br />
-            Est germanus vox, cesaris.<br />
-            Sensorems tolerare in vasa!<br />
-          </p>
+          <p className="w-[1024px] m-auto text-base [column-count:2] h-min" dangerouslySetInnerHTML={{ __html: engagementHTML }}></p>
         </section>
 
         <section id="contact" className="py-24 w-[1024px] mx-auto grid grid-cols-[330px_1fr_1fr] gap-36 text-2xl scroll-m-24">
